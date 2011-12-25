@@ -199,6 +199,8 @@
             doc.createElement( "scr" + "ipt" )
         ).setAttribute( "src", url + "store.js" );
 
+        removeElements();
+
     } else if ( 1 === ob.length ) {
 
         selectRestore( 0 );
