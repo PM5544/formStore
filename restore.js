@@ -11,7 +11,7 @@
     ,   removeThese = [ "pm5544StoreScript", "pm5544RestoreScript" ]
     ,   url         = "https://raw.github.com/PM5544/formStore/master/"
 
-    ,   gFont       = doc.createElement( "link"  )
+    ,   gFont       = doc.createElement( "link" )
     ,   styles      = doc.createElement( "link" )
 
     ,   head        = doc.getElementsByTagName( "head" )[ 0 ]
