@@ -1,0 +1,95 @@
+#pm5544RestoreContainer,
+#pm5544StoreContainer{
+      border-radius:5px;
+        margin-left:-250px;
+         background:#fff;
+         text-align:left;
+         min-height:60px;
+         max-height:80%;
+         overflow-y:auto;
+         box-shadow:2px 3px 10px rgba(0,0,0,.4);
+           position:fixed;
+            padding:5px;
+            z-index:9999999;
+             border:1px solid #eee;
+              width:500px;
+               left:50%;
+               font:normal 12px/30px Verdana,sans-serif;
+                top:10%;
+}
+#pm5544StoreContainer{
+          padding:5px 20px 20px;
+}
+#pm5544RestoreContainer h1,
+#pm5544StoreContainer h1{
+      border-bottom:1px solid #ccc;
+        text-shadow:2px 2px 3px rgba(0,0,0,0.3);
+         text-align:center;
+             margin:0 0 10px 0;
+               font:normal 32px/65px 'Nova Square';
+}
+#pm5544RestoreContainer a{
+    text-decoration:none;
+      border-radius:5px;
+        line-height:20px;
+         text-align:left;
+            display:inline-block;
+            padding:0 5px;
+             cursor:pointer;
+             border:1px solid #e7e7e7;
+              color:#000;
+              width:445px;
+}
+#pm5544RestoreContainer a.select:hover{
+         background:#e7e7e7;
+}
+#pm5544RestoreContainer a.select:hover:before{
+            content:'fill form with: ';
+}
+#pm5544RestoreContainer a.remove{
+        margin-left:5px;
+        line-height:18px;
+        font-weight:bold;
+         text-align:center;
+            padding:0;
+             cursor:pointer;
+             border:1px solid #8e1111;
+              width:19px;
+              color:#8e1111;
+}
+#pm5544RestoreContainer a.remove:hover{
+         background:#8e1111;
+              color:#fff;
+}
+#pm5544RestoreBackground,
+#pleaseDownloadADecentBrowserAsSoonAsPossible{
+         background:rgba(255,255,255,0.6);
+           position:fixed;
+            z-index:999999;
+             bottom:0;
+              right:0;
+               left:0;
+                top:0;
+}
+#pleaseDownloadADecentBrowserAsSoonAsPossible{
+         background:#fff;
+             filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60,Style=0);
+}
+#pm5544StoreContainer input{
+      border-radius:5px;
+	     box-shadow:inset 0 0 5px rgba(150,150,150,0.2);
+	     margin-top:20px;
+	        display:inline-block;
+	        padding:3px;
+             height:20px;
+             border:1px solid #ccc;
+	          width:492px;
+}
+#pm5544StoreContainer input[type='submit']{
+        line-height:20px;
+         background:#fff;
+         text-align:center;
+         box-shadow:0 0 5px rgba(150,150,150,0.2);
+             height:auto;
+              width:500px;
+}
