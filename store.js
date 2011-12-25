@@ -210,18 +210,18 @@
 
     if ( "opacity" in background.style ) {
 
-        addStyleRule( "#shizzleBackground", "position:fixed; z-index:999999; top:0; left:0; right:0; bottom:0; background:rgba(255,255,255,0.6);" );
+        addStyleRule( "#pm5544StoreBackground", "position:fixed; z-index:999999; top:0; left:0; right:0; bottom:0; background:rgba(255,255,255,0.6);" );
 
     } else {
 
-        addStyleRule( "#shizzleBackground", "position:fixed; z-index:999999; top:0; left:0; right:0; bottom:0; background:#fff; filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60,Style=0);" );
+        addStyleRule( "#pm5544StoreBackground", "position:fixed; z-index:999999; top:0; left:0; right:0; bottom:0; background:#fff; filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60,Style=0);" );
 
     }
 
     addStyleRule( "#pm5544StoreContainer", "position:fixed; z-index:999999; width:500px; background:#fff; border: 1px solid #eee; border-radius:5px; padding:5px 20px 20px; left:50%; top:20px; margin-left:-250px; box-shadow:2px 3px 10px rgba(0,0,0,.4);" );
     addStyleRule( "#pm5544StoreContainer h1", "margin:0 0 10px 0; font:normal 32px/65px 'Nova Square'; text-shadow:2px 2px 3px rgba(0,0,0,0.3); border-bottom:1px solid #ccc; text-align:center;" );
     addStyleRule( "#pm5544StoreContainer input", "display:inline-block; box-shadow:inset 0 0 5px rgba(150,150,150,0.2); margin-top:20px; height:20px; padding:3px; width:492px; border-radius:5px; border:1px solid #ccc;" );
-    addStyleRule( "#pm5544StoreContainer input[type='submit']", "box-shadow:0 0 5px rgba(150,150,150,0.2); text-align:center; height:20px; line-height:20px; background:#fff; width:500px;" );
+    addStyleRule( "#pm5544StoreContainer input[type='submit']", "box-shadow:0 0 5px rgba(150,150,150,0.2); text-align:center; height:auto; line-height:20px; background:#fff; width:500px;" );
 
     addHandler( background, "click", removeElements );
     background.id = "pm5544StoreBackground";
