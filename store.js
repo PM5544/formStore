@@ -1,5 +1,8 @@
 ;( function ( win, doc, undefined ) {
 
+    if ( !win.JSON || !win.localStorage ||doc.querySelector )
+        return;
+
     var str         = doc.location.pathname.replace( /\W/g, "" )
     ,   obStr       = win.localStorage.getItem( str )
     ,   ob          = JSON.parse( obStr ) || []
@@ -116,7 +119,7 @@
 
             form = forms[ i ];
 
-            if ( form.clientWidth && ( !form.id || -1 === form.id.indexOf( "heleen" ) ) ) {
+            if ( form.clientWidth ) {
 
                 named = form.querySelectorAll( "[name]" );
 

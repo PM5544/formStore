@@ -1,5 +1,8 @@
 ;( function ( win, doc, undefined ) {
 
+    if ( !win.JSON || !win.localStorage ||doc.querySelector )
+        return;
+
     var str         = doc.location.pathname.replace( /\W/g, '' )
     ,   obStr       = win.localStorage.getItem( str )
     ,   ob          = JSON.parse( obStr ) || []
