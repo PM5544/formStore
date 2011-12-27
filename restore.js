@@ -1,6 +1,6 @@
 ;( function ( win, doc, undefined ) {
 
-    if ( !win.JSON || !win.localStorage ||doc.querySelector )
+    if ( !win.JSON || !win.localStorage || !doc.querySelector )
         return;
 
     var str         = doc.location.pathname.replace( /\W/g, '' )
