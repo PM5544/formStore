@@ -39,11 +39,13 @@
 
         if ( doc.createEvent ) {
 
+            var evt;
+            
             switch ( type ) {
 
                 case "click" :
 
-                    var evt = doc.createEvent( "MouseEvents" );
+                    evt = doc.createEvent( "MouseEvents" );
                     evt.initMouseEvent( "click", true, true, win, 0, 0, 0, 0, 0, false, false, false, false, 0, null );
                     node.dispatchEvent( evt );
 
@@ -51,7 +53,7 @@
 
                 case "submit":
 
-                    var evt = doc.createEvent( "HTMLEvents" );
+                    evt = doc.createEvent( "HTMLEvents" );
                     evt.initEvent( "submit", true, true );
                     node.dispatchEvent( evt );
 
