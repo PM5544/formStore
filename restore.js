@@ -227,6 +227,7 @@
         }
 
         addStyleRule( "#pm5544RestoreContainer", "text-align:left; position:fixed; z-index:9999999; width:500px; background:#fff; border:1px solid #eee; border-radius:5px; padding:5px; left:50%; top:10%; font:normal 12px/30px Verdana,sans-serif; margin-left:-250px; min-height:60px; max-height:80%; overflow-y:auto; box-shadow:2px 3px 10px rgba(0,0,0,.4);" );
+        addStyleRule( "#pm5544RestoreContainer h1", "margin:0 0 10px 0; font:normal 32px/65px 'Nova Square'; text-shadow:2px 2px 3px rgba(0,0,0,0.3); border-bottom:1px solid #ccc; text-align:center;" );
         addStyleRule( "#pm5544RestoreContainer a", "text-align:left; color:#000; display:inline-block; line-height:20px; padding:0 5px; width:445px; cursor:pointer; border:1px solid #e7e7e7; border-radius:5px; text-decoration:none;");
         addStyleRule( "#pm5544RestoreContainer a.select:hover", "background:#e7e7e7;" );
         addStyleRule( "#pm5544RestoreContainer a.select:hover:before", "content:'restore form with: ';" );
