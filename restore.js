@@ -40,24 +40,43 @@
 
         if ( doc.createEvent ) {
 
+            var evt;
+
             switch ( type ) {
 
                 case "click" :
 
-                    var evt = doc.createEvent( "MouseEvents" );
+                    evt = doc.createEvent( "MouseEvents" );
                     evt.initMouseEvent( "click", true, true, win, 0, 0, 0, 0, 0, false, false, false, false, 0, null );
+                    node.dispatchEvent( evt );
+
+                    break;
+
+                case "blur":
+
+                    evt = doc.createEvent( "UIEvents" );
+                    evt.initUIEvent( "blur", true, true, win, null );
+                    node.dispatchEvent( evt );
+
+                    break;
+
+                case "focus":
+
+                    evt = doc.createEvent( "UIEvents" );
+                    evt.initUIEvent( "focus", true, true, win, null );
                     node.dispatchEvent( evt );
 
                     break;
 
                 case "submit":
 
-                    var evt = doc.createEvent( "HTMLEvents" );
+                    evt = doc.createEvent( "HTMLEvents" );
                     evt.initEvent( "submit", true, true );
                     node.dispatchEvent( evt );
 
                     break;
             }
+
         } else {
 
             node.fireEvent( "on" + type );
@@ -128,7 +147,11 @@
 
                 curI = doc.querySelector( "input[name='" + inputs[ i ][ 0 ] + "']" );
                 if ( curI ) {
+                    
+                    triggerHandler( curI, "focus" );
                     curI.value = inputs[ i ][ 1 ];
+                    triggerHandler( curI, "blur" );
+
                 }
 
             }
