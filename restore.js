@@ -208,7 +208,11 @@
 
                         curSKid = curSKids[ o ];
 
-                        if ( 1 === curSKid.nodeType && "option" == curSKid.nodeName.toLowerCase() && -1 !== arrayIndexOf( selects[ s ][ 1 ], curSKid.value ) ) {
+                        if ( 1 !== curSKid.nodeType && "option" !== curSKid.nodeName.toLowerCase() ) {
+                            continue;
+                        }
+
+                        if ( -1 !== arrayIndexOf( selects[ s ][ 1 ], curSKid.value ) ) {
 
                             curSKid.selected = true;
 

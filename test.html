@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<title>form store/restore bookmarklets</title></head>
+<title>form store/restore bookmarklets</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+</head>
 <body>
-Drag the following link to your bookmark bar to <a href='javascript:void((function(doc){var s=doc.createElement("scr"+"ipt");s.src="store.js";s.id="pm5544StoreScript";doc.body.appendChild(s)})(document))'>store</a> or <a href='javascript:void((function(doc){var s=doc.createElement("scr"+"ipt");s.src="restore.js";s.id="pm5544RestoreScript";doc.body.appendChild(s)})(document))'>restore</a> a form state for this test page.</p>
-<form>
-    <input type="text" name="i1" placeholder="not filled yet" /><br />
-    <input type="text" name="i2" placeholder="not filled yet" /><br />
-    <input type="text" name="i3" placeholder="not filled yet" /><br />
-    <textarea name="i4" placeholder="not filled yet"></textarea><br />
+<p>Drag the following link to your bookmark bar to <a href='javascript:void((function(doc){var s=doc.createElement("scr"+"ipt");s.src="store.js";s.id="pm5544StoreScript";doc.body.appendChild(s)})(document))'>store</a> or <a href='javascript:void((function(doc){var s=doc.createElement("scr"+"ipt");s.src="restore.js";s.id="pm5544RestoreScript";doc.body.appendChild(s)})(document))'>restore</a> a form state for this test page.</p>
+<form action="#">
+    <input type="text" name="i1" /><br />
+    <input type="text" name="i2" /><br />
+    <input type="text" name="i3" /><br />
+    <textarea name="i4"></textarea><br />
     <input type="radio" name="i5" value="1"/><input type="radio" name="i5" value="2"/><input type="radio" name="i5" value="3"/><input type="radio" name="i5" value="4"/><br />
     <input type="checkbox" name="i6" value="1"/><input type="checkbox" name="i7" value="2"/><input type="checkbox" name="i8" value="3"/><input type="checkbox" name="i9" value="4"/><br />
     <select name="i10">
@@ -39,6 +40,4 @@ Drag the following link to your bookmark bar to <a href='javascript:void((functi
     </select>
 </form>
 </body>
-
-
-
+</html>
