@@ -84,6 +84,27 @@
         }
     }
 
+    var arrayIndexOf = ( function() {
+
+        if ( "function" === Array.prototype.indexOf ) {
+
+            return function( ar, val ) {
+                return ar.indexOf( val );
+            }
+
+        } else {
+
+            return function( ar, val ) {
+                for ( var i = 0, len = ar.length; i < len; i++ ) {
+                    if ( ar[ i ] === val ) return i
+                }
+                return -1;
+            }
+
+        }
+
+    } ) ();
+
     function removeElements() {
 
         var elements = removeThese
@@ -131,23 +152,26 @@
         ,   inputs
         ,   radios
         ,   checkboxes
+        ,   selects
 
         ,   curI
         ,   curR
         ,   curC
+        ,   curS, curSKids, curSKid
         ;
 
         if ( selected ) {
 
-            radios      = selected.values.radios;
-            inputs      = selected.values.inputs;
-            checkboxes  = selected.values.checkboxes;
+            radios      = selected.values.radios        || [];
+            inputs      = selected.values.inputs        || [];
+            checkboxes  = selected.values.checkboxes    || [];
+            selects     = selected.values.selects       || [];
 
             for ( var i = 0, iLen = inputs.length; i < iLen; i++ ) {
 
-                curI = doc.querySelector( "input[name='" + inputs[ i ][ 0 ] + "']" );
+                curI = doc.querySelector( "input[name='" + inputs[ i ][ 0 ] + "']" ) || doc.querySelector( "textarea[name='" + inputs[ i ][ 0 ] + "']" );
                 if ( curI ) {
-                    
+
                     triggerHandler( curI, "focus" );
                     curI.value = inputs[ i ][ 1 ];
                     triggerHandler( curI, "blur" );
@@ -169,7 +193,32 @@
 
                 curR = doc.querySelector( "input[type='radio'][name='" + radios[ r ][ 0 ] + "'][value='" + radios[ r ][ 1 ] + "']" );
                 if ( curR ) {
-                    curR.selected = true;
+                    curR.checked = true;
+                }
+
+            }
+
+            for ( var s = 0, sLen = selects.length; s < sLen; s++ ) {
+
+                curS = doc.querySelector( "select[name='" + selects[ s ][ 0 ] + "']" );
+                if ( curS ) {
+                    curSKids = curS.childNodes;
+
+                    for ( var o  = 0, len = curSKids.length; o < len; o++ ) {
+
+                        curSKid = curSKids[ o ];
+
+                        if ( 1 === curSKid.nodeType && "option" == curSKid.nodeName.toLowerCase() && -1 !== arrayIndexOf( selects[ s ][ 1 ], curSKid.value ) ) {
+
+                            curSKid.selected = true;
+
+                        } else {
+
+                            curSKid.selected = false;
+
+                        }
+                    }
+
                 }
 
             }

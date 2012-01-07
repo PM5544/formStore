@@ -40,7 +40,7 @@
         if ( doc.createEvent ) {
 
             var evt;
-            
+
             switch ( type ) {
 
                 case "click" :
@@ -104,16 +104,17 @@
     function getAllInputValues() {
 
         var returnOb = {
-            inputs: []
-        ,   radios: []
+            inputs:     []
+        ,   radios:     []
         ,   checkboxes: []
+        ,   selects:    []
         }
         ,   forms = doc.forms
         ,   form
         ,   named
         ,   cur
         ,   name
-        ,   radios
+        ,   options, option, optionsAr
         ,   type
         ;
 
@@ -136,6 +137,22 @@
                         if ( cur.value ) {
                             returnOb.inputs.push( [ name, cur.value ] );
                         }
+
+                    } else if ( "select" === cur.nodeName.toLowerCase() ) {
+
+                        options = cur.childNodes;
+                        optionsAr = [];
+
+                        for ( var o = 0, oLen = options.length; o < oLen; o++) {
+
+                            option = options[ o ];
+
+                            if ( 1 === option.nodeType && "option" === option.nodeName.toLowerCase() && option.selected ) {
+                                optionsAr.push( option.value );
+                            }
+                        }
+
+                        returnOb.selects.push( [ name, optionsAr ] );
 
                     } else {
 
