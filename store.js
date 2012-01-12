@@ -209,19 +209,20 @@
 
     var addStyleRule = ( function ( domStyle ){
 
-    if ( domStyle.addRule ) {
+        if ( domStyle.addRule ) {
 
-        return function( selector, styleRule ) {
-            domStyle.addRule( selector, styleRule );
+            return function( selector, styleRule ) {
+                domStyle.addRule( selector, styleRule );
+            }
+
+        } else {
+
+            return function( selector, styleRule ) {
+                domStyle.insertRule( selector + "{" + styleRule + "}", domStyle.length )
+            }
+
         }
 
-    } else {
-
-        return function( selector, styleRule ) {
-            domStyle.insertRule( selector + "{" + styleRule + "}", domStyle.length )
-        }
-
-    }
     } )( styles[ 'undefined' !== typeof styles.sheet ? 'sheet' : 'undefined' !== typeof styles.getSheet ? 'getSheet' : 'styleSheet' ] );
 
     gFont.href   = "//fonts.googleapis.com/css?family=Nova+Square&text=Saveformst";
