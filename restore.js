@@ -75,6 +75,14 @@
                     node.dispatchEvent( evt );
 
                     break;
+
+                case "change":
+
+                    evt = doc.createEvent( "MutationEvents" );
+                    evt.initEvent( "change", true, true );
+                    node.dispatchEvent( evt );
+
+                    break;
             }
 
         } else {
@@ -173,7 +181,11 @@
                 if ( curI ) {
 
                     triggerHandler( curI, "focus" );
+
                     curI.value = inputs[ i ][ 1 ];
+
+                    triggerHandler( curI, "change" );
+
                     triggerHandler( curI, "blur" );
 
                 }
@@ -184,7 +196,14 @@
 
                 curC = doc.querySelector( "input[name='" + checkboxes[ c ][ 0 ] + "']" );
                 if ( curC ) {
+
+                    triggerHandler( curI, "focus" );
+
                     curC.checked = checkboxes[ c ][ 1 ];
+
+                    triggerHandler( curC, "change" );
+
+                    triggerHandler( curI, "blur" );
                 }
 
             }
@@ -193,7 +212,14 @@
 
                 curR = doc.querySelector( "input[type='radio'][name='" + radios[ r ][ 0 ] + "'][value='" + radios[ r ][ 1 ] + "']" );
                 if ( curR ) {
+
+                    triggerHandler( curI, "focus" );
+
                     curR.checked = true;
+
+                    triggerHandler( curR, "change" );
+
+                    triggerHandler( curI, "blur" );
                 }
 
             }
@@ -203,6 +229,8 @@
                 curS = doc.querySelector( "select[name='" + selects[ s ][ 0 ] + "']" );
                 if ( curS ) {
                     curSKids = curS.childNodes;
+
+                    triggerHandler( curS, "focus" );
 
                     for ( var o  = 0, len = curSKids.length; o < len; o++ ) {
 
@@ -222,6 +250,10 @@
 
                         }
                     }
+
+                    triggerHandler( curS, "change" );
+                    
+                    triggerHandler( curS, "blur" );
 
                 }
 
