@@ -287,19 +287,19 @@
 
     var addStyleRule = ( function ( domStyle ){
 
-    if ( domStyle.addRule ) {
+        if ( domStyle.addRule ) {
 
-        return function( selector, styleRule ) {
-            domStyle.addRule( selector, styleRule );
+            return function( selector, styleRule ) {
+                domStyle.addRule( selector, styleRule );
+            }
+
+        } else {
+
+            return function( selector, styleRule ) {
+                domStyle.insertRule( selector + "{" + styleRule + "}", domStyle.cssRules.length )
+            }
+
         }
-
-    } else {
-
-        return function( selector, styleRule ) {
-            domStyle.insertRule( selector + "{" + styleRule + "}", domStyle.cssRules.length )
-        }
-
-    }
     } )( styles[ 'undefined' !== typeof styles.sheet ? 'sheet' : 'undefined' !== typeof styles.getSheet ? 'getSheet' : 'styleSheet' ] );
 
 
