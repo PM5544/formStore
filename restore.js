@@ -252,7 +252,7 @@
                     }
 
                     triggerHandler( curS, "change" );
-                    
+
                     triggerHandler( curS, "blur" );
 
                 }
@@ -296,7 +296,7 @@
     } else {
 
         return function( selector, styleRule ) {
-            domStyle.insertRule( selector + "{" + styleRule + "}", domStyle.length )
+            domStyle.insertRule( selector + "{" + styleRule + "}", domStyle.cssRules.length )
         }
 
     }
