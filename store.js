@@ -1,7 +1,10 @@
-;( function ( win, doc, undefined ) {
+( function ( win, doc, undefined ) {
 
-    if ( !win.JSON || !win.localStorage || !doc.querySelector )
+    if ( !win.JSON || !win.localStorage || !doc.querySelector ) {
+
         return;
+
+    }
 
     var str         = doc.location.pathname.replace( /\W/g, "" )
     ,   obStr       = win.localStorage.getItem( str )
@@ -104,14 +107,16 @@
     function getAllInputValues() {
 
         var returnOb = {
-            inputs:     []
-        ,   radios:     []
-        ,   checkboxes: []
-        ,   selects:    []
-        }
+                inputs:     []
+            ,   radios:     []
+            ,   checkboxes: []
+            ,   selects:    []
+            ,   unnamed:    []
+            }
         ,   forms = doc.forms
         ,   form
         ,   named
+        ,   unnamed
         ,   cur
         ,   name
         ,   options, option, optionsAr
@@ -140,14 +145,14 @@
 
                     } else if ( "select" === cur.nodeName.toLowerCase() ) {
 
-                        options = cur.childNodes;
+                        options = cur.getElementsByTagName( "option" );
                         optionsAr = [];
 
                         for ( var o = 0, oLen = options.length; o < oLen; o++) {
 
                             option = options[ o ];
 
-                            if ( 1 === option.nodeType && "option" === option.nodeName.toLowerCase() && option.selected ) {
+                            if ( option.selected ) {
                                 optionsAr.push( option.value );
                             }
                         }
@@ -191,7 +196,15 @@
             }
         }
 
-        if ( returnOb.inputs.length || returnOb.radios.length || returnOb.checkboxes.length ) {
+        unnamed = doc.querySelectorAll( "input:not([name])" );
+
+        for ( var u = 0, uLen = unnamed.length;  u < uLen; u++ ) {
+
+            returnOb.unnamed.push( unnamed[ u ].value );
+
+        }
+
+        if ( returnOb.inputs.length || returnOb.radios.length || returnOb.checkboxes.length || returnOb.unnamed.length ) {
 
             return returnOb;
 
@@ -213,13 +226,13 @@
 
             return function( selector, styleRule ) {
                 domStyle.addRule( selector, styleRule );
-            }
+            };
 
         } else {
 
             return function( selector, styleRule ) {
-                domStyle.insertRule( selector + "{" + styleRule + "}", domStyle.cssRules.length )
-            }
+                domStyle.insertRule( selector + "{" + styleRule + "}", domStyle.cssRules.length );
+            };
 
         }
 
@@ -280,7 +293,7 @@
                         description: dInput.value
                     ,   values: inputObject
                     }
-                )
+                );
 
                 localStorage.setItem(
                     str

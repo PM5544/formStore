@@ -5,7 +5,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 </head>
 <body>
-<p>Drag the following link to your bookmark bar to <a href='javascript:void((function(doc){var s=doc.createElement("scr"+"ipt");s.src="store.js";s.id="pm5544StoreScript";doc.body.appendChild(s)})(document))'>store</a> or <a href='javascript:void((function(doc){var s=doc.createElement("scr"+"ipt");s.src="restore.js";s.id="pm5544RestoreScript";doc.body.appendChild(s)})(document))'>restore</a> a form state for this test page.</p>
+<p>Click the <a href='javascript:void((function(doc){var s=doc.createElement("scr"+"ipt");s.src="store.js";s.id="pm5544StoreScript";doc.body.appendChild(s)})(document))'>store link</a> or the <a href='javascript:void((function(doc){var s=doc.createElement("scr"+"ipt");s.src="restore.js";s.id="pm5544RestoreScript";doc.body.appendChild(s)})(document))'>restore link</a> to test this script.</p>
 <form action="#">
     <input type="text" name="i1" /><br />
     <input type="text" name="i2" /><br />
@@ -38,6 +38,46 @@
         <option value="9" >9</option>
         <option value="10" >10</option>
     </select>
+    <select name="i12">
+        <optgroup label="first five">
+            <option value="1" >1</option>
+            <option value="2" >2</option>
+            <option value="3" >3</option>
+            <option value="4" >4</option>
+            <option value="5" >5</option>
+        </optgroup>
+        <optgroup label="second five">
+            <option value="6" >6</option>
+            <option value="7" >7</option>
+            <option value="8" >8</option>
+            <option value="9" >9</option>
+            <option value="10" >10</option>
+        </optgroup>
+    </select>
+    <select name="i13" multiple="multiple" size="12">
+        <optgroup label="first five">
+            <option value="1" >1</option>
+            <option value="2" >2</option>
+            <option value="3" >3</option>
+            <option value="4" >4</option>
+            <option value="5" >5</option>
+        </optgroup>
+        <optgroup label="second five">
+            <option value="6" >6</option>
+            <option value="7" >7</option>
+            <option value="8" >8</option>
+            <option value="9" >9</option>
+            <option value="10" >10</option>
+        </optgroup>
+    </select>
+    <p>unnamed inputs</p>
+    <ol>
+        <li><input type="text" />
+        <li><input type="text" />
+        <li><input type="text" />
+        <li><input type="text" />
+        <li><input type="text" />
+    </ol>
 </form>
 </body>
 </html>

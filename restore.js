@@ -1,7 +1,10 @@
-;( function ( win, doc, undefined ) {
+( function ( win, doc, undefined ) {
 
-    if ( !win.JSON || !win.localStorage || !doc.querySelector )
+    if ( !win.JSON || !win.localStorage || !doc.querySelector ) {
+
         return;
+
+    }
 
     var str         = doc.location.pathname.replace( /\W/g, '' )
     ,   obStr       = win.localStorage.getItem( str )
@@ -98,16 +101,25 @@
 
             return function( ar, val ) {
                 return ar.indexOf( val );
-            }
+            };
 
         } else {
 
             return function( ar, val ) {
+
                 for ( var i = 0, len = ar.length; i < len; i++ ) {
-                    if ( ar[ i ] === val ) return i
+
+                    if ( ar[ i ] === val ) {
+
+                        return i;
+
+                    }
+
                 }
+
                 return -1;
-            }
+
+            };
 
         }
 
@@ -132,28 +144,6 @@
         }
     }
 
-    function selectRestore( _e ) {
-
-        var e
-        ,   node
-        ,   selected
-        ;
-
-        if ( "number" === typeof _e ) {
-
-            selected = ob[ _e ];
-
-        } else {
-
-            e = _e || win.event;
-            node = e.target || e.srcElement;
-            selected = ob[ parseInt( node.getAttribute( "data-item" ), 10 ) ];
-
-        }
-
-        restore( selected )
-    }
-
     function restore( selectedOb ) {
 
         var selected = selectedOb || false
@@ -161,11 +151,13 @@
         ,   radios
         ,   checkboxes
         ,   selects
+        ,   unnamed
 
         ,   curI
         ,   curR
         ,   curC
-        ,   curS, curSKids, curSKid
+        ,   curS, curOptions, curOption
+        ,   curU, unnamedElements
         ;
 
         if ( selected ) {
@@ -174,6 +166,7 @@
             inputs      = selected.values.inputs        || [];
             checkboxes  = selected.values.checkboxes    || [];
             selects     = selected.values.selects       || [];
+            unnamed     = selected.values.unnamed       || [];
 
             for ( var i = 0, iLen = inputs.length; i < iLen; i++ ) {
 
@@ -227,26 +220,23 @@
             for ( var s = 0, sLen = selects.length; s < sLen; s++ ) {
 
                 curS = doc.querySelector( "select[name='" + selects[ s ][ 0 ] + "']" );
+
                 if ( curS ) {
-                    curSKids = curS.childNodes;
+                    curOptions = curS.getElementsByTagName( "option" );
 
                     triggerHandler( curS, "focus" );
 
-                    for ( var o  = 0, len = curSKids.length; o < len; o++ ) {
+                    for ( var o  = 0, len = curOptions.length; o < len; o++ ) {
 
-                        curSKid = curSKids[ o ];
+                        curOption = curOptions[ o ];
 
-                        if ( 1 !== curSKid.nodeType && "option" !== curSKid.nodeName.toLowerCase() ) {
-                            continue;
-                        }
+                        if ( -1 !== arrayIndexOf( selects[ s ][ 1 ], curOption.value ) ) {
 
-                        if ( -1 !== arrayIndexOf( selects[ s ][ 1 ], curSKid.value ) ) {
-
-                            curSKid.selected = true;
+                            curOption.selected = true;
 
                         } else {
 
-                            curSKid.selected = false;
+                            curOption.selected = false;
 
                         }
                     }
@@ -259,9 +249,57 @@
 
             }
 
+            unnamedElements = doc.querySelectorAll( "input:not([name])" );
+
+            if ( unnamedElements.length ) {
+
+                for ( var u = 0, uLen = unnamed.length; u < uLen; u++ ) {
+
+                    if ( !unnamed[ u ] || !unnamedElements[ u ] ) {
+
+                        break;
+
+                    }
+
+                    curU = unnamedElements[ u ];
+
+                    triggerHandler( curU, "focus" );
+
+                    curU.value = unnamed[ u ];
+
+                    triggerHandler( curU, "change" );
+
+                    triggerHandler( curU, "blur" );
+
+                }
+
+            }
+
         }
 
         removeElements();
+    }
+
+    function selectRestore( _e ) {
+
+        var e
+        ,   node
+        ,   selected
+        ;
+
+        if ( "number" === typeof _e ) {
+
+            selected = ob[ _e ];
+
+        } else {
+
+            e = _e || win.event;
+            node = e.target || e.srcElement;
+            selected = ob[ parseInt( node.getAttribute( "data-item" ), 10 ) ];
+
+        }
+
+        restore( selected );
     }
 
     function removeSelected( _e ) {
@@ -291,13 +329,13 @@
 
             return function( selector, styleRule ) {
                 domStyle.addRule( selector, styleRule );
-            }
+            };
 
         } else {
 
             return function( selector, styleRule ) {
-                domStyle.insertRule( selector + "{" + styleRule + "}", domStyle.cssRules.length )
-            }
+                domStyle.insertRule( selector + "{" + styleRule + "}", domStyle.cssRules.length );
+            };
 
         }
     } )( styles[ 'undefined' !== typeof styles.sheet ? 'sheet' : 'undefined' !== typeof styles.getSheet ? 'getSheet' : 'styleSheet' ] );
