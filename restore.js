@@ -2,6 +2,13 @@
 
     if ( !win.JSON || !win.localStorage || !doc.querySelector ) {
 
+        win.alert(
+            "sorry, but your current browser does not support:\n"
+        +  ( !win.JSON          ? "JSON\n"          : "" )
+        +  ( !win.localStorage  ? "localStorage\n"  : "" )
+        +  ( !win.querySelector ? "querySelector\n" : "" )
+        );
+
         return;
 
     }
@@ -364,11 +371,11 @@
 
         if ( "opacity" in background.style ) {
 
-            addStyleRule( "#pm5544RestoreBackground", "position:fixed; z-index:999999; top:0; left:0; right:0; bottom:0; background:rgba(255,255,255,0.6);" );
+            addStyleRule( "#pm5544RestoreBackground", "position:fixed; z-index:999999; width: auto; margin: 0; padding: 0; top:0; left:0; right:0; bottom:0; background:rgba(255,255,255,0.6);" );
 
         } else {
 
-            addStyleRule( "#pm5544RestoreBackground", "position:fixed; z-index:999999; top:0; left:0; right:0; bottom:0; background:#fff; filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60,Style=0);" );
+            addStyleRule( "#pm5544RestoreBackground", "position:fixed; z-index:999999; width: auto; margin: 0; padding: 0; top:0; left:0; right:0; bottom:0; background:#fff; filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60,Style=0);" );
 
         }
 

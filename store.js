@@ -2,6 +2,13 @@
 
     if ( !win.JSON || !win.localStorage || !doc.querySelector ) {
 
+        win.alert(
+            "sorry, but your current browser does not support:\n"
+        +  ( !win.JSON          ? "JSON\n"          : "" )
+        +  ( !win.localStorage  ? "localStorage\n"  : "" )
+        +  ( !win.querySelector ? "querySelector\n" : "" )
+        );
+
         return;
 
     }
@@ -116,7 +123,7 @@
         ,   forms = doc.forms
         ,   form
         ,   named
-        ,   unnamed
+        ,   unnamed, curUnnamed
         ,   cur
         ,   name
         ,   options, option, optionsAr
@@ -196,11 +203,17 @@
             }
         }
 
-        unnamed = doc.querySelectorAll( "input:not([name])" );
+        unnamed = doc.getElementsByTagName( "input" );
 
         for ( var u = 0, uLen = unnamed.length;  u < uLen; u++ ) {
 
-            returnOb.unnamed.push( unnamed[ u ].value );
+            curUnnamed = unnamed[ u ];
+
+            if ( !curUnnamed.getAttribute( "name" ) && curUnnamed.clientWidth ) {
+
+                returnOb.unnamed.push( curUnnamed.value );
+
+            }
 
         }
 
@@ -246,11 +259,11 @@
 
     if ( "opacity" in background.style ) {
 
-        addStyleRule( "#pm5544StoreBackground", "position:fixed; z-index:999999; top:0; left:0; right:0; bottom:0; background:rgba(255,255,255,0.6);" );
+        addStyleRule( "#pm5544StoreBackground", "position:fixed; z-index:999999; width: auto; margin: 0; padding: 0; top:0; left:0; right:0; bottom:0; background:rgba(255,255,255,0.6);" );
 
     } else {
 
-        addStyleRule( "#pm5544StoreBackground", "position:fixed; z-index:999999; top:0; left:0; right:0; bottom:0; background:#fff; filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60,Style=0);" );
+        addStyleRule( "#pm5544StoreBackground", "position:fixed; z-index:999999; width: auto; margin: 0; padding: 0; top:0; left:0; right:0; bottom:0; background:#fff; filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60,Style=0);" );
 
     }
 
