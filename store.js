@@ -4,9 +4,10 @@
 
         win.alert(
             "sorry, but your current browser does not support:\n"
-        +  ( !win.JSON          ? "JSON\n"          : "" )
-        +  ( !win.localStorage  ? "localStorage\n"  : "" )
-        +  ( !win.querySelector ? "querySelector\n" : "" )
+        +  ( !win.JSON          ? " - JSON\n"          : "" )
+        +  ( !win.localStorage  ? " - localStorage\n"  : "" )
+        +  ( !win.querySelector ? " - querySelector\n" : "" )
+        +   "Therefor this script can not function properly."
         );
 
         return;
@@ -30,6 +31,8 @@
     ,   styles      = doc.createElement( "style" )
 
     ,   head        = doc.getElementsByTagName( "head" )[ 0 ]
+
+    ,  focusedEl    = doc.activeElement
     ;
 
     function addHandler( node, type, fn ) {
@@ -109,6 +112,9 @@
 
             }
         }
+
+        focusedEl && focusedEl.select && focusedEl.select();
+
     }
 
     function getAllInputValues() {
@@ -203,21 +209,31 @@
             }
         }
 
-        unnamed = doc.getElementsByTagName( "input" );
+        if ( !returnOb.inputs.length
+        &&   !returnOb.radios.length
+        &&   !returnOb.checkboxes.length
+        &&   !returnOb.selects.length ) {
 
-        for ( var u = 0, uLen = unnamed.length;  u < uLen; u++ ) {
+            unnamed = doc.getElementsByTagName( "input" );
 
-            curUnnamed = unnamed[ u ];
+            for ( var u = 0, uLen = unnamed.length;  u < uLen; u++ ) {
 
-            if ( !curUnnamed.getAttribute( "name" ) && curUnnamed.clientWidth ) {
+                curUnnamed = unnamed[ u ];
 
-                returnOb.unnamed.push( curUnnamed.value );
+                if ( !curUnnamed.getAttribute( "name" ) && curUnnamed.clientWidth ) {
+
+                    returnOb.unnamed.push( curUnnamed.value );
+
+                }
 
             }
-
         }
 
-        if ( returnOb.inputs.length || returnOb.radios.length || returnOb.checkboxes.length || returnOb.unnamed.length ) {
+        if ( returnOb.inputs.length
+        ||   returnOb.radios.length
+        ||   returnOb.checkboxes.length
+        ||   returnOb.selects.length
+        ||   returnOb.unnamed.length ) {
 
             return returnOb;
 
@@ -322,5 +338,7 @@
     );
 
     doc.body.appendChild( frag );
+
+    container.querySelector( "input" ).select();
 
 } ) ( this, this.document );
