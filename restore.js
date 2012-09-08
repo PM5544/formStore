@@ -7,6 +7,7 @@
         +  ( !win.JSON          ? "JSON\n"          : "" )
         +  ( !win.localStorage  ? "localStorage\n"  : "" )
         +  ( !win.querySelector ? "querySelector\n" : "" )
+        +   "Therefor this script can not function properly."
         );
 
         return;
@@ -256,17 +257,11 @@
 
             }
 
-            unnamedElements = doc.querySelectorAll( "input:not([name])" );
+            unnamedElements = doc.getElementsByTagName( "input" );
 
-            if ( unnamedElements.length ) {
+            if ( unnamedElements.length && unnamedElements.length === unnamed.length ) {
 
                 for ( var u = 0, uLen = unnamed.length; u < uLen; u++ ) {
-
-                    if ( !unnamed[ u ] || !unnamedElements[ u ] ) {
-
-                        break;
-
-                    }
 
                     curU = unnamedElements[ u ];
 
