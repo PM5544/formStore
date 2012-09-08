@@ -113,7 +113,7 @@
             }
         }
 
-        focusedEl && focusedEl.select && focusedEl.select();
+        focusedEl && focusedEl.focus && focusedEl.focus();
 
     }
 
