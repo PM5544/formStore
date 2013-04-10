@@ -257,7 +257,8 @@
 
             }
 
-            unnamedElements = doc.getElementsByTagName( "input" );
+            unnamedElements = doc.querySelectorAll( "input:not([name])" );
+
 
             if ( unnamedElements.length && unnamedElements.length === unnamed.length ) {
 
