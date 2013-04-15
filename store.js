@@ -179,6 +179,9 @@
                             case "hidden":
                             case "text":
                             case "password":
+                            case "number":
+                            case "email":
+                            case "date":
                             case "":
 
                                 if ( cur.value ) {
