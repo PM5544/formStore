@@ -184,15 +184,14 @@
                     triggerHandler( curI, "focus" );
 
                     curI.value = inputs[ i ][ 1 ];
-
-                    triggerHandler( curI, "change" );
-
-                    triggerHandler( curI, "blur" );
                     
                     if (curI.dispatchEvent) {
                         curI.dispatchEvent( new Event('input') );
                     }
+                    
+                    triggerHandler( curI, "change" );
 
+                    triggerHandler( curI, "blur" );
                 }
 
             }
@@ -206,13 +205,13 @@
 
                     curC.checked = checkboxes[ c ][ 1 ];
 
-                    triggerHandler( curC, "change" );
-
-                    triggerHandler( curI, "blur" );
-                    
                     if (curC.dispatchEvent) {
                         curC.dispatchEvent( new Event('input') );
                     }
+                    
+                    triggerHandler( curC, "change" );
+
+                    triggerHandler( curI, "blur" );
                 }
 
             }
@@ -226,13 +225,13 @@
 
                     curR.checked = true;
 
-                    triggerHandler( curR, "change" );
-
-                    triggerHandler( curI, "blur" );
-                    
                     if (curR.dispatchEvent) {
                         curR.dispatchEvent( new Event('input') );
                     }
+                    
+                    triggerHandler( curR, "change" );
+
+                    triggerHandler( curI, "blur" );
                 }
 
             }
@@ -261,14 +260,13 @@
                         }
                     }
 
-                    triggerHandler( curS, "change" );
-
-                    triggerHandler( curS, "blur" );
-                    
                     if (curS.dispatchEvent) {
                         curS.dispatchEvent( new Event('input') );
                     }
+                    
+                    triggerHandler( curS, "change" );
 
+                    triggerHandler( curS, "blur" );
                 }
 
             }
@@ -286,13 +284,13 @@
 
                     curU.value = unnamed[ u ];
 
-                    triggerHandler( curU, "change" );
-
-                    triggerHandler( curU, "blur" );
-                    
                     if (curU.dispatchEvent) {
                         curU.dispatchEvent( new Event('input') );
                     }
+                    
+                    triggerHandler( curU, "change" );
+
+                    triggerHandler( curU, "blur" );
                 }
 
             }
