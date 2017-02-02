@@ -190,7 +190,7 @@
                     triggerHandler( curI, "blur" );
                     
                     if (curI.dispatchEvent) {
-                        curI.dispatchEvent( new InputEvent('input') );
+                        curI.dispatchEvent( new Event('input') );
                     }
 
                 }
@@ -211,7 +211,7 @@
                     triggerHandler( curI, "blur" );
                     
                     if (curC.dispatchEvent) {
-                        curC.dispatchEvent( new InputEvent('input') );
+                        curC.dispatchEvent( new Event('input') );
                     }
                 }
 
@@ -231,7 +231,7 @@
                     triggerHandler( curI, "blur" );
                     
                     if (curR.dispatchEvent) {
-                        curR.dispatchEvent( new InputEvent('input') );
+                        curR.dispatchEvent( new Event('input') );
                     }
                 }
 
@@ -266,7 +266,7 @@
                     triggerHandler( curS, "blur" );
                     
                     if (curS.dispatchEvent) {
-                        curS.dispatchEvent( new InputEvent('input') );
+                        curS.dispatchEvent( new Event('input') );
                     }
 
                 }
@@ -291,7 +291,7 @@
                     triggerHandler( curU, "blur" );
                     
                     if (curU.dispatchEvent) {
-                        curU.dispatchEvent( new InputEvent('input') );
+                        curU.dispatchEvent( new Event('input') );
                     }
                 }
 
