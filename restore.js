@@ -188,6 +188,10 @@
                     triggerHandler( curI, "change" );
 
                     triggerHandler( curI, "blur" );
+                    
+                    if (curI.dispatchEvent) {
+                        curI.dispatchEvent( new InputEvent('input') );
+                    }
 
                 }
 
@@ -205,6 +209,10 @@
                     triggerHandler( curC, "change" );
 
                     triggerHandler( curI, "blur" );
+                    
+                    if (curC.dispatchEvent) {
+                        curC.dispatchEvent( new InputEvent('input') );
+                    }
                 }
 
             }
@@ -221,6 +229,10 @@
                     triggerHandler( curR, "change" );
 
                     triggerHandler( curI, "blur" );
+                    
+                    if (curR.dispatchEvent) {
+                        curR.dispatchEvent( new InputEvent('input') );
+                    }
                 }
 
             }
@@ -252,6 +264,10 @@
                     triggerHandler( curS, "change" );
 
                     triggerHandler( curS, "blur" );
+                    
+                    if (curS.dispatchEvent) {
+                        curS.dispatchEvent( new InputEvent('input') );
+                    }
 
                 }
 
@@ -273,7 +289,10 @@
                     triggerHandler( curU, "change" );
 
                     triggerHandler( curU, "blur" );
-
+                    
+                    if (curU.dispatchEvent) {
+                        curU.dispatchEvent( new InputEvent('input') );
+                    }
                 }
 
             }
